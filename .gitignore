@@ -39,5 +39,3 @@ terraform.rc
 # Logs
 *.log
 
-# remote backends containing resource info
-backend.tf
