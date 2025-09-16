@@ -60,7 +60,7 @@ resource "aws_iam_role_policy_attachment" "node_policy" {
   }
 
   policy_arn = each.value
-  role       = aws_iam_role.node_role.name
+  role       = aws_iam_role.node-role.name
 }
 
 resource "aws_eks_node_group" "eks-cluster-node-group" {
@@ -81,5 +81,5 @@ resource "aws_eks_node_group" "eks-cluster-node-group" {
       min_size = each.value.scaling_config.min_size
     }
 
-    depends_on = [ aws_iam_role_policy_attachment.node_policy ]
+    depends_on = [ aws_iam_role_policy_attachment.node_policy, aws_eks_cluster.eks-cluster ]
 }
